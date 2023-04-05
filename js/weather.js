@@ -1,19 +1,15 @@
-// Select the id #weatherForm to use the addEventListener
 const weatherForm = document.querySelector('#weatherForm');
 
-// Select the <div></div> with the .weatherContainer class
 const weatherContainer = document.querySelector('.weatherContainer');
 
-// Use the addEventListener
 weatherForm.addEventListener('submit', searchWeather);
 
-// This function is used to search for weather
 function searchWeather(e) {
     e.preventDefault();
     const country = document.querySelector('#country').value;
     const city = document.querySelector('#city').value;
 
-    // If any or both of the 2 fields is empty, it executes the weatherError function
+    // If any or both of the 2 fields is empty
     if (country === '' || city === '') {
         weatherError('Both fields are required');
         return;
@@ -27,7 +23,6 @@ function searchWeather(e) {
 function weatherError(message) {
 
     // If the weatherError message is already displayed
-
     const fieldsRequiredSign = document.querySelector('.fieldsRequired');
 
     if (fieldsRequiredSign) {
@@ -50,7 +45,6 @@ function weatherError(message) {
     }, 3000)
 };
 
-// This function is used to check the weather's API
 function checkWeatherAPI(country, city) {
     const appID = '807c27d0ce1e6ca7d3964c0642a727c5';
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${appID}`;
@@ -63,15 +57,13 @@ function checkWeatherAPI(country, city) {
                 return;
             }
 
-            // Call the function that displays the weather in the .html
-            showWeather(data);
+                        showWeather(data);
         })
 };
 
-// Displays the weather in the .html
 function showWeather(data) {
 
-    // If there is already a printed weather, delete the content
+    // If there is already a printed weather
     cleanWeatherInfo();
 
     // Extracts the current temperature, the maximum and minimum of main
@@ -82,10 +74,9 @@ function showWeather(data) {
     const minTemp = Math.round(Number(temp_min) - 273.15);
     const maxTemp = Math.round(Number(temp_max) - 273.15);
 
-    // Creates a <p></p> containing the temp, max temp and min temp - &#8451 is used to display "°C"
     const tempP = document.createElement('p');
 
-    // Converts the first letter of each word to uppercase and the other letters to lowercase, then displays the temp
+    // In case the user puts the city completely in lower or upper case letters - &#8451 is used to display "°C"
     const cityName = city.value.toLowerCase().replace(/(^|\s)\S/g, (L) => L.toUpperCase());
     tempP.innerHTML = `${cityName}: Temp ${currentTemp} &#8451 - Max ${maxTemp} &#8451 - Min ${minTemp} &#8451`;
 
@@ -98,7 +89,7 @@ function showWeather(data) {
     weatherContainer.appendChild(tempDiv);
 };
 
-// If there is already a printed weather, delete the content
+// If there is already a printed weather
 function cleanWeatherInfo() {
     const weatherInfo = document.querySelector('.weatherInfo');
 
