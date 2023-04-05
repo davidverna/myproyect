@@ -84,7 +84,10 @@ function showWeather(data) {
 
     // Creates a <p></p> containing the temp, max temp and min temp - &#8451 is used to display "°C"
     const tempP = document.createElement('p');
-    tempP.innerHTML = `${city.value}: Temp ${currentTemp} &#8451 - Max ${maxTemp} &#8451 - Min ${minTemp} &#8451`;
+
+    // Converts the first letter of each word to uppercase and the other letters to lowercase, then displays the temp
+    const cityName = city.value.toLowerCase().replace(/(^|\s)\S/g, (L) => L.toUpperCase());
+    tempP.innerHTML = `${cityName}: Temp ${currentTemp} &#8451 - Max ${maxTemp} &#8451 - Min ${minTemp} &#8451`;
 
     // Places temps inside a <div></div>
     const tempDiv = document.createElement('div');
