@@ -92,6 +92,7 @@ function showWeather(data) {
     weatherContainer.appendChild(tempDiv);
 };
 
+// If there is already a printed weather, delete the content
 function cleanWeatherInfo() {
     const weatherInfo = document.querySelector('.weatherInfo');
 
