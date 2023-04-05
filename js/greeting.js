@@ -1,12 +1,15 @@
 // Ask the user's name
-const UserName = prompt('Hi!! What\'s your name?');
+const userName = prompt('Hi!! What\'s your name?');
+
+// Capitalize the first letter of each word and convert the rest to lowercase
+const capitalizedUserName = userName.split(' ').map(name => name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()).join(' ');
 
 // The greeting
-let greeting = `Hi, ${UserName}!`;
+let greeting = `Hi, ${capitalizedUserName}!`;
 
 // If the user doesn't enter the name
-if (UserName === null || UserName === '') {
-    greeting = 'Hi!'
+if (userName === null || userName === '') {
+    greeting = 'Hi!';
 }
 
 // Inserting the greeting in index.html
