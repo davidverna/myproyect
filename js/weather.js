@@ -68,6 +68,9 @@ function checkWeatherAPI(country, city) {
 // Displays the weather in the .html
 function showWeather(data) {
 
+    // If there is already a printed weather, delete the content
+    cleanWeatherInfo();
+
     // Extracts the current temperature, the maximum and minimum of main
     const {main: {temp, temp_min, temp_max}} = data;
 
@@ -82,9 +85,17 @@ function showWeather(data) {
 
     // Places temps inside a <div></div>
     const tempDiv = document.createElement('div');
-    tempDiv.classList.add('weatherDiv');
+    tempDiv.classList.add('weatherInfo');
     tempDiv.appendChild(tempP);
 
     // Places tempDiv inside weatherContainer
     weatherContainer.appendChild(tempDiv);
+};
+
+function cleanWeatherInfo() {
+    const weatherInfo = document.querySelector('.weatherInfo');
+
+    if (weatherInfo) {
+        weatherInfo.remove();
+    }
 };
