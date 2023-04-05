@@ -26,7 +26,7 @@ function searchWeather(e) {
 // This function is used to display the message "Both fields are required"
 function weatherError(message) {
 
-    // If the "Both fields are required" message is already displayed
+    // If the weatherError message is already displayed
 
     const fieldsRequiredSign = document.querySelector('.fieldsRequired');
 
