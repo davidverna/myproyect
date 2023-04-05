@@ -27,8 +27,11 @@ function searchWeather(e) {
 function weatherError(message) {
 
     // If the "Both fields are required" message is already displayed
-    if (document.querySelector('.fieldsRequired')) {
-        return;
+
+    const fieldsRequiredSign = document.querySelector('.fieldsRequired');
+
+    if (fieldsRequiredSign) {
+        fieldsRequiredSign.remove();
     }
 
     // If the "Both fields are required" message is the first time it is displayed
